@@ -25,7 +25,7 @@ const sendOTP=async (e)=>{
   setSendedOTP(otp)
   
   try{
-  const result= await axios.post(`${REACT_APP_BACKEND_URL}/FargotPassword`,{email,otp});
+  const result= await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/FargotPassword`,{email,otp});
   setSendPassword(result.data[0]["password"])
   }
 catch(err){

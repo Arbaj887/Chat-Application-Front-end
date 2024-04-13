@@ -8,7 +8,7 @@ function GlobalFriendRequest() {
 
 useEffect(()=>{
         async function global(){
-         const global = await axios.post(`${REACT_APP_BACKEND_URL}/GetFriendRequest`,{email})
+         const global = await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/GetFriendRequest`,{email})
                 
                 setGlobalUser(global.data)
         }
@@ -23,7 +23,7 @@ const rejectFriend=async (e,friendEmail)=>{
     e.preventDefault()
   
   try {
-     await axios.post(`${REACT_APP_BACKEND_URL}/RejectFriendRequest`,{friendEmail,email});
+     await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/RejectFriendRequest`,{friendEmail,email});
     
     // Handle the response as needed
     
@@ -40,7 +40,7 @@ const acceptFriend= async (e,friendEmail)=>{
     e.preventDefault()
     try {
         console.log(friendEmail)
-       const c= await axios.post(`${REACT_APP_BACKEND_URL}/AcceptFriendRequest`,{friendEmail,email});
+       const c= await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/AcceptFriendRequest`,{friendEmail,email});
        
        // Handle the response as needed
        console.log(c)

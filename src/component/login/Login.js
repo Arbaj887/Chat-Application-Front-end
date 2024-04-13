@@ -24,7 +24,7 @@ function Login() {
    if(email.endsWith("@gmail.com") && 3<password.length  ){
     try{
       
-     const result=await axios.post(`${REACT_APP_BACKEND_URL}/Login`, {email,password})
+     const result=await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/Login`, {email,password})
     
      
      if (result.status === 200) {

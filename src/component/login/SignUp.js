@@ -84,7 +84,7 @@ const signUp = async (e)=>{
               
            }
   //-------------------connecting to--database---------------------------------------  
-    const result=await axios.post(`${REACT_APP_BACKEND_URL}/SignUp`, {fileImage ,userName,email,password,phoneNumber,language})
+    const result=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/SignUp`, {fileImage ,userName,email,password,phoneNumber,language})
     
      if(result.status===200){
           setMessage(result.data.message)

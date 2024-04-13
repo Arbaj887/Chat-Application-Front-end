@@ -18,7 +18,7 @@ useEffect(()=>{
    async function checkSession(){
    try{
     
-       const sessionValue = await axios.post(`${REACT_APP_BACKEND_URL}/sessionCheck`,{sessionEmail,sessionPassword})
+       const sessionValue = await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/sessionCheck`,{sessionEmail,sessionPassword})
        
 
        

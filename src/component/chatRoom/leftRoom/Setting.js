@@ -20,7 +20,7 @@ function Setting() {
   
   useEffect( ()=>{
     async function currentValue(){
-   const currentValue = await (await axios.post(`${REACT_APP_BACKEND_URL}/Setting`,{email})).data[0]
+   const currentValue = await (await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/Setting`,{email})).data[0]
    
    
    setUpdateImage(currentValue['image'])
@@ -62,7 +62,7 @@ const updateUser= async (e)=>{
          setFileImage( await uploadFile(fileImage));   
           }  
    
-         const update= await (await axios.post(`${REACT_APP_BACKEND_URL}/settingUpdate`,
+         const update= await (await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/settingUpdate`,
                {email,fileImage,updateName,updatePhone,updatePassword,updateLanguage})).data
 
 //----------------------Context--Value--also updated-----------------------------------------------------------
