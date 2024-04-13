@@ -14,7 +14,7 @@ function Login() {
   const [errMessage,setErrMessage]=useState(undefined)
   const [loding,setLoding]=useState(false)
   const navigate= useNavigate()
-  
+  const variabel= "new"
   const proxy="http://localhost:8000"
 
  async function checkLogin(e){
