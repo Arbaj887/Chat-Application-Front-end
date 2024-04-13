@@ -15,7 +15,7 @@ function Login() {
   const [loding,setLoding]=useState(false)
   const navigate= useNavigate()
   
-  const proxy="http://localhost:8000"
+  
 
  async function checkLogin(e){
   e.preventDefault() 
@@ -24,7 +24,7 @@ function Login() {
    if(email.endsWith("@gmail.com") && 3<password.length  ){
     try{
       
-     const result=await axios.post(`${proxy}/Login`, {email,password})
+     const result=await axios.post(`${REACT_APP_BACKEND_URL}/Login`, {email,password})
     
      
      if (result.status === 200) {

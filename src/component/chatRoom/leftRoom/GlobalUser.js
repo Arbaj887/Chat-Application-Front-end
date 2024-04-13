@@ -14,7 +14,7 @@ function GlobalUser() {
 
 useEffect(()=>{
   async function global(){
-   const global = await axios.get("http://localhost:8000/Global")
+   const global = await axios.get(`${REACT_APP_BACKEND_URL}/Global`)
       
           
           setGlobalUser(global.data.filter((user) => {  
@@ -31,7 +31,7 @@ const addFriend=async (e,friendEmail)=>{
   e.preventDefault()
   console.log(friendEmail)
   try {
-    const response = await axios.post(`http://localhost:8000/FriendRequest`,{friendEmail,email});
+    const response = await axios.post(`${REACT_APP_BACKEND_URL}/FriendRequest`,{friendEmail,email});
     console.log(response.data)
     // Handle the response as needed
     if (response.status===200){

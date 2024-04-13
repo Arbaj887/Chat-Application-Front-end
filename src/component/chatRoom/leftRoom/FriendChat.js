@@ -24,7 +24,7 @@ function FriendChat() {
 
 const getFriend= async ()=>{
   try{
-  const result = await axios.post("http://localhost:8000/Friend",{email,password});
+  const result = await axios.post(`${REACT_APP_BACKEND_URL}/Friend`,{email,password});
   
    setFriend(result.data[0]['friend'])
   }catch(err){

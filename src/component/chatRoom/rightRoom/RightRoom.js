@@ -5,7 +5,7 @@ import { SiGooglechat } from "react-icons/si";
 import UserContext from '../../../contextAPI/UserContext';
 import io from 'socket.io-client'
 
-const socket = io.connect("http://localhost:8000");
+const socket = io.connect(`${REACT_APP_BACKEND_URL}`);
 
 function RightRoom() {
  
@@ -19,9 +19,9 @@ function RightRoom() {
   useEffect(() => {
     async function selectUser() {
       try {
-        const result = await axios.post("http://localhost:8000/SelectedUser", { selectedUser });
+        const result = await axios.post(`${REACT_APP_BACKEND_URL}/SelectedUser`, { selectedUser });
         setSelectFriend(result.data);
-        const getMessage = await axios.post('http://localhost:8000/getMessage', { from: sender, to: selectedUser });
+        const getMessage = await axios.post(`${REACT_APP_BACKEND_URL}/getMessage`, { from: sender, to: selectedUser });
         setMessages(getMessage.data);
   //-------------------------------join-------------socket----------------------------------
         socket.emit('join', {email: sender});
@@ -38,7 +38,7 @@ function RightRoom() {
   const sendMessage = async () => {
     if (message.trim() !== '') { // Trim the message to ensure it's not just spaces
       try {
-        await axios.post('http://localhost:8000/sendMessage', { message, from: sender, to: selectedUser });
+        await axios.post(`${REACT_APP_BACKEND_URL}/sendMessage`, { message, from: sender, to: selectedUser });
         const newMessages = [...messages, { fromSelf: true, message: message }];
 
         socket.emit('send_message', {email:selectedUser,msg:message });
