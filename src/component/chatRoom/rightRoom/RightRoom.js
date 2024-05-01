@@ -53,10 +53,10 @@ function RightRoom() {
   }
   //Listen for messages from the server
   useEffect(() => {
-    socket.on('receive_message', (data) => {
+    socket.on('receive_message', (translateMsg) => {
       // Update messages state with the received message
      
-      setMessages([...messages, { fromSelf: false, message: data }]);
+      setMessages([...messages, { fromSelf: false, message: translateMsg }]);
     });
 
     // Clean up socket event listener
