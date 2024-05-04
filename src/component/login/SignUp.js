@@ -78,13 +78,20 @@ const signUp = async (e)=>{
     try{
       setLoding(true)
 //-----------------------------Calling---------UploadFile--Function---------------------------------
-         
-          if (image !== defaultImage) {
-            setFileImage( await uploadFile(fileImage));
-              
-           }
+      let uploadUrl;  
+ 
+    if(fileImage){
+     
+      uploadUrl= await uploadFile(fileImage); 
+   
+    
+  }else{
+    uploadUrl=defaultImage;
+  }
+
+  
   //-------------------connecting to--database---------------------------------------  
-    const result=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/SignUp`, {fileImage ,userName,email,password,phoneNumber,language})
+    const result=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/SignUp`, {fileImage:uploadUrl ,userName,email,password,phoneNumber,language})
     
      if(result.status===200){
           setMessage(result.data.message)

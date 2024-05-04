@@ -34,11 +34,13 @@ function Login() {
       navigate("/ChatRoom");
       setLoding(false)
     }
+    
   } catch (err) {
     setLoding(false)
     // If login fails, display error message
     setErr(true);
-    setErrMessage("An error occurred during login");
+   
+    setErrMessage(err.response.data.error ||"An error occurred during  login");
     setTimeout(() => {
       setErr(false);
     }, 8000);

@@ -57,24 +57,34 @@ const updateUser= async (e)=>{
   try{
     
     setLoding(true)
+    let uploadUrl='';
     
        if(fileImage){
-         setFileImage( await uploadFile(fileImage));   
-          }  
-   
-         const update= await (await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/settingUpdate`,
-               {email,fileImage,updateName,updatePhone,updatePassword,updateLanguage})).data
+          
+        uploadUrl= await uploadFile(fileImage); 
+        
+         
+     }
+     
+
+      
+         
+          const update= await axios.post(`${ process.env.REACT_APP_BACKEND_URL}/settingUpdate`,
+          {email,fileImage: uploadUrl ,updateName,updatePhone,updatePassword,updateLanguage})
 
 //----------------------Context--Value--also updated-----------------------------------------------------------
-              
-               sessionStorage.setItem('password',update['password'])
-              //  console.log(sessionStorage.getItem('password'))
-              
+        
+          sessionStorage.setItem('password',update.data['password'])
+         //  console.log(sessionStorage.getItem('password'))
+        
 
-        setLoding(false)
+   setLoding(false)
+
+         
+         
   }
   catch(err){
-    console.log(err)
+    console.log(err.response.data.error)
     setLoding(false)
   }
 }
